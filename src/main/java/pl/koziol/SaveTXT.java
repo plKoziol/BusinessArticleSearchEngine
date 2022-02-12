@@ -7,7 +7,6 @@ import java.util.List;
 
 public class SaveTXT {
     private void saveArticle(Article article){
-        System.out.println(article.getTitle());
         PrintWriter save = null;
         try {
             save = new PrintWriter(new FileWriter("result.txt", true));

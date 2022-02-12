@@ -17,7 +17,6 @@ public class SearchForArticles {
                     @Override
                     public void onSuccess(ArticleResponse response) {
                         saveTXT.saveArticleList(response.getArticles());
-                        System.out.println("ok");
                     }
 
                     @Override

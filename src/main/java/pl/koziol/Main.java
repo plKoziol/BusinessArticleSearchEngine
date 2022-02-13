@@ -11,6 +11,7 @@ public class Main {
         SearchForArticles searchForArticles = new SearchForArticles();
         searchForArticles.startGenerate();
 
+
     }
 
 }

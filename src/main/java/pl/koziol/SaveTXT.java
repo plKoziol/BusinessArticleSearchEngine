@@ -1,14 +1,17 @@
 package pl.koziol;
 
 import com.kwabenaberko.newsapilib.models.Article;
+import com.kwabenaberko.newsapilib.models.Source;
 
 import java.io.*;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class SaveTXT {
+    SQLiteRepository repository = new SQLiteRepository();
     /**
      * This method is responsible for saving the article in the assumed format "Title:Description:Author"
+     * Moreover, this method add article to BD
      */
     private void saveArticle(Article article){
         PrintWriter save = null;
@@ -17,6 +20,11 @@ public class SaveTXT {
             save.println(article.getTitle() + ":"
                     + article.getDescription() + ":"
                     + article.getAuthor());
+            Source s = article.getSource();
+            s.setCountry("pl");
+            s.setCategory("business");
+            article.setSource(s);
+            repository.insertArticle(article);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -30,6 +38,7 @@ public class SaveTXT {
      * This method is responsible for removing all files from txt document and creating new head with current date and time
      */
     private void documentCleaner () {
+        repository.cleanDB();
         FileWriter cleaner = null;
         try {
             cleaner = new FileWriter("result.txt", false);

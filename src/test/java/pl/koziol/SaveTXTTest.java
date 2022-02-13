@@ -24,6 +24,7 @@ class SaveTXTTest {
             article.setDescription("description " + i);
             article.setTitle("title " + i);
             articles.add(article);
+
         }
     }
 
